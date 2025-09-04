@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asaxiy Header</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<link rel="stylesheet" href="style.css">
+
+<body class="font-sans">
+
+    <header class="border-b shadow-sm">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+
+            <div class="flex items-center space-x-3">
+                <img src="./image/logo (12).svg" alt="Logo" class="h-8">
+
+                <button id="openMenu"
+                    class="flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    Категории
+                </button>
+
+                <div class="flex border rounded-lg overflow-hidden">
+                    <input type="text" placeholder="Поиск..." class="px-3 py-2 outline-none w-64">
+                    <button class="bg-blue-600 text-white px-4 hover:bg-blue-700">Искать</button>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-6 text-sm">
+                <a href="#" class="flex flex-col items-center hover:text-blue-600">
+                    <img src="./image/tarozi.svg" class="h-6 mb-1"> Сравнение
+                </a>
+                <a href="#" class="flex flex-col items-center hover:text-blue-600">
+                    <img src="./image/Оплатить.svg" class="h-6 mb-1"> Оплатить
+                </a>
+                <a href="#" class="flex flex-col items-center hover:text-blue-600">
+                    <img src="./image/header.svg" class="h-6 mb-1"> Отследить
+                </a>
+                <a href="#" class="relative flex flex-col items-center hover:text-blue-600">
+                    <img src="./image/header (2).svg" class="h-6 mb-1"> Корзина
+                    <span class="absolute top-0 right-0 bg-blue-600 text-white text-xs rounded-full px-1">0</span>
+                </a>
+                <a href="#" class="relative flex flex-col items-center hover:text-blue-600">
+                    <img src="./image/header3.svg" class="h-6 mb-1"> Избранное
+                    <span class="absolute top-0 right-0 bg-blue-600 text-white text-xs rounded-full px-1">0</span>
+                </a>
+                <button class="flex items-center hover:text-blue-600">
+                    <img src="./image/header4.svg" class="h-6 mr-1"> O'zbekcha
+                </button>
+                <a href="#" class="flex items-center hover:text-blue-600">
+                    <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    </svg>
+                    Войти
+                </a>
+            </div>
+        </div>
+
+        <nav class="border-t">
+            <div class="max-w-7xl mx-auto flex justify-between px-4 py-2 text-sm">
+                <a href="#" class="hover:text-blue-600">Супер цена</a>
+                <a href="#" class="hover:text-blue-600">0-0-6</a>
+                <a href="#" class="hover:text-blue-600">Лучшее для студентов</a>
+                <a href="#" class="hover:text-blue-600">Смартфоны</a>
+                <a href="#" class="hover:text-blue-600">Бытовая техника</a>
+                <a href="#" class="hover:text-blue-600">Книги</a>
+                <a href="#" class="hover:text-blue-600">Телевизоры</a>
+                <a href="#" class="hover:text-blue-600">Ноутбуки</a>
+            </div>
+        </nav>
+    </header>
+
+    <div id="menuOverlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+
+    <div id="sidebar"
+        class="hidden fixed top-0 left-0 h-full w-3/4 md:w-1/2 lg:w-1/3 bg-white shadow-lg overflow-y-auto z-50">
+        <div class="flex justify-between items-center p-4 border-b">
+            <h2 class="text-lg font-bold">Категории</h2>
+            <button id="closeMenu" class="text-red-600 font-bold">X</button>
+        </div>
+
+        <div class="flex">
+            <ul class="w-1/3 border-r">
+                <li class="p-3 hover:bg-gray-100 cursor-pointer" onclick="showSub('books')">Книги</li>
+                <li class="p-3 hover:bg-gray-100 cursor-pointer" onclick="showSub('phones')">Телефоны</li>
+                <li class="p-3 hover:bg-gray-100 cursor-pointer" onclick="showSub('tech')">Бытовая техника</li>
+                <li class="p-3 hover:bg-gray-100 cursor-pointer" onclick="showSub('computers')">Компьютерная техника
+                </li>
+                <li class="p-3 hover:bg-gray-100 cursor-pointer" onclick="showSub('sport')">Спорт и отдых</li>
+            </ul>
+
+            <div class="w-2/3 p-4" id="subContent">
+                <p class="text-gray-500">Выберите категорию...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto relative">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-semibold">Супер цена</h2>
+            <a href="#" class="text-sm text-blue-600 hover:underline">Все товары</a>
+        </div>
+
+        <div class="relative">
+            <button id="prevBtn"
+                class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white shadow-md rounded-full p-2 z-10 hover:bg-gray-100 transition">
+                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                </svg>
+            </button>
+
+            <button id="nextBtn"
+                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white shadow-md rounded-full p-2 z-10 hover:bg-gray-100 transition">
+                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                </svg>
+            </button>
+
+            <div class="overflow-hidden">
+                <div id="carouselTrack" class="flex transition-transform duration-500 ease-in-out">
+
+                    <div class="w-1/5 flex-shrink-0 p-2">
+                        <div class="bg-white p-3 rounded shadow hover:shadow-lg transition hover:scale-105">
+                            <img src="./image/section2.svg" class="h-32 mx-auto mb-2" />
+                            <h3 class="text-sm font-semibold">Dell Inspiron</h3>
+                            <div class="text-xs line-through text-gray-400">4 189 000 сум</div>
+                            <div class="text-sm text-red-600 font-bold">3 849 000 сум</div>
+                        </div>
+                    </div>
+
+                    <div class="w-1/5 flex-shrink-0 p-2">
+                        <div class="bg-white p-3 rounded shadow hover:shadow-lg transition hover:scale-105">
+                            <img src="./image/section3.svg" class="h-32 mx-auto mb-2" />
+                            <h3 class="text-sm font-semibold">Xiaomi 14C</h3>
+                            <div class="text-xs line-through text-gray-400">1 998 000 сум</div>
+                            <div class="text-sm text-red-600 font-bold">1 599 000 сум</div>
+                        </div>
+                    </div>
+
+                    <div class="w-1/5 flex-shrink-0 p-2">
+                        <div class="bg-white p-3 rounded shadow hover:shadow-lg transition hover:scale-105">
+                            <img src="./image/section4.svg" class="h-32 mx-auto mb-2" />
+                            <h3 class="text-sm font-semibold">Artel TV</h3>
+                            <div class="text-xs line-through text-gray-400">1 839 000 сум</div>
+                            <div class="text-sm text-red-600 font-bold">1 599 000 сум</div>
+                        </div>
+                    </div>
+
+                    <div class="w-1/5 flex-shrink-0 p-2">
+                        <div class="bg-white p-3 rounded shadow hover:shadow-lg transition hover:scale-105">
+                            <img src="./image/section5.svg" class="h-32 mx-auto mb-2" />
+                            <h3 class="text-sm font-semibold">Honor X9C</h3>
+                            <div class="text-xs line-through text-gray-400">4 749 000 сум</div>
+                            <div class="text-sm text-red-600 font-bold">3 849 000 сум</div>
+                        </div>
+                    </div>
+
+                    <div class="w-1/5 flex-shrink-0 p-2">
+                        <div class="bg-white p-3 rounded shadow hover:shadow-lg transition hover:scale-105">
+                            <img src="./image/section6.svg" class="h-32 mx-auto mb-2" />
+                            <h3 class="text-sm font-semibold">Граф Монте-Кристо</h3>
+                            <div class="text-xs line-through text-gray-400">189 000 сум</div>
+                            <div class="text-sm text-red-600 font-bold">159 000 сум</div>
+                        </div>
+                    </div>
+
+                    <div class="w-1/5 flex-shrink-0 p-2">
+                        <div class="bg-white p-3 rounded shadow hover:shadow-lg transition hover:scale-105">
+                            <img src="https://cdn1.asahiy.uz/ast/static/products/2023/09/30/samsung-galaxy-a56.png"
+                                class="h-32 mx-auto mb-2" />
+                            <h3 class="text-sm font-semibold">Samsung A56</h3>
+                            <div class="text-xs line-through text-gray-400">5 379 000 сум</div>
+                            <div class="text-sm text-red-600 font-bold">5 169 000 сум</div>
+                        </div>
+                    </div>
+
+                    <div class="w-1/5 flex-shrink-0 p-2">
+                        <div class="bg-white p-3 rounded shadow hover:shadow-lg transition hover:scale-105">
+                            <img src="https://cdn1.asahiy.uz/ast/static/products/2023/09/30/phone-nokia-g42.png"
+                                class="h-32 mx-auto mb-2" />
+                            <h3 class="text-sm font-semibold">Nokia G42</h3>
+                            <div class="text-xs line-through text-gray-400">2 099 000 сум</div>
+                            <div class="text-sm text-red-600 font-bold">1 799 000 сум</div>
+                        </div>
+                    </div>
+
+                    <div class="w-1/5 flex-shrink-0 p-2">
+                        <div class="bg-white p-3 rounded shadow hover:shadow-lg transition hover:scale-105">
+                            <img src="./image/card4.svg" class="h-32 mx-auto mb-2" />
+                            <h3 class="text-sm font-semibold">Realme C53</h3>
+                            <div class="text-xs line-through text-gray-400">1 459 000 сум</div>
+                            <div class="text-sm text-red-600 font-bold">1 199 000 сум</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <section class="relative w-full max-w-[1200px] mx-auto overflow-hidden bg-white py-4">
+                <div id="bannerSlider"
+                    class="flex transition-transform duration-700 ease-in-out gap-3 hover:cursor-pointer">
+
+                    <div
+                        class="min-w-[300px] max-w-[300px] rounded-xl overflow-hidden transform hover:-translate-y-1 hover:shadow-xl transition">
+                        <img src="./image/card11.svg" alt="Banner 1" class="w-full h-full object-contain" />
+                    </div>
+
+                    <div
+                        class="min-w-[300px] max-w-[300px] rounded-xl overflow-hidden transform hover:-translate-y-1 hover:shadow-xl transition">
+                        <img src="./image/card2.svg" alt="Banner 2" class="w-full h-full object-contain" />
+                    </div>
+                    <div
+                        class="min-w-[300px] max-w-[300px] rounded-xl overflow-hidden transform hover:-translate-y-1 hover:shadow-xl transition">
+                        <img src="./image/card3.svg" alt="Banner 3" class="w-full h-full object-contain" />
+                    </div>
+                    <div
+                        class="min-w-[300px] max-w-[300px] rounded-xl overflow-hidden transform hover:-translate-y-1 hover:shadow-xl transition">
+                        <img src="./image/card4.svg" alt="Banner 4" class="w-full h-full object-contain" />
+                    </div>
+                </div>
+
+                <button id="prevBanner"
+                    class="absolute left-2 top-1/2 -translate-y-1/2 bg-white w-8 h-8 rounded-full shadow hover:bg-gray-100 flex items-center justify-center z-10">
+                    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                </button>
+
+                <button id="nextBanner"
+                    class="absolute right-2 top-1/2 -translate-y-1/2 bg-white w-8 h-8 rounded-full shadow hover:bg-gray-100 flex items-center justify-center z-10">
+                    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </button>
+            </section>
+
+            <section class="max-w-[1200px] mx-auto py-6 px-4">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-semibold text-gray-800">Телефоны и гаджеты</h2>
+                    <a href="#" class="text-blue-500 hover:underline text-sm">Все товары</a>
+                </div>
+
+                <div class="relative overflow-hidden">
+                    <div id="slider" class="flex gap-4 transition-transform duration-500 ease-in-out">
+                        <div class="w-[220px] bg-white rounded-lg shadow hover:shadow-md transition p-4 flex flex-col">
+                            <span class="bg-orange-400 text-white text-xs font-bold px-2 py-1 rounded mb-2">СУПЕР
+                                ЦЕНА</span>
+                            <img src="./image/section7.svg" alt="HONOR 400" class="w-full h-40 object-contain mb-2" />
+                            <h3 class="text-sm font-medium text-gray-800 mb-1">HONOR 400 8/256GB Midnight Black</h3>
+                            <div class="text-sm text-gray-400 line-through">5 549 000 сум</div>
+                            <div class="text-base text-blue-600 font-semibold">5 549 000 сум</div>
+                            <div
+                                class="mt-auto bg-blue-500 text-white text-sm font-semibold text-center py-2 rounded hover:bg-blue-600 cursor-pointer">
+                                Купить в один клик</div>
+                        </div>
+                        <div class="w-[220px] bg-white rounded-lg shadow hover:shadow-md transition p-4 flex flex-col">
+                            <span class="bg-orange-400 text-white text-xs font-bold px-2 py-1 rounded mb-2">СУПЕР
+                                ЦЕНА</span>
+                            <img src="./image/section8.svg" alt="iPhone 16 Pro Max"
+                                class="w-full h-40 object-contain mb-2" />
+                            <h3 class="text-sm font-medium text-gray-800 mb-1">iPhone 16 Pro Max 256GB</h3>
+                            <div class="text-sm text-gray-400 line-through">18 945 000 сум</div>
+                            <div class="text-base text-blue-600 font-semibold">17 889 000 сум</div>
+                            <div
+                                class="mt-auto bg-blue-500 text-white text-sm font-semibold text-center py-2 rounded hover:bg-blue-600 cursor-pointer">
+                                Купить в один клик</div>
+                        </div>
+                        <div class="w-[220px] bg-white rounded-lg shadow hover:shadow-md transition p-4 flex flex-col">
+                            <span class="bg-orange-400 text-white text-xs font-bold px-2 py-1 rounded mb-2">СУПЕР
+                                ЦЕНА</span>
+                            <img src="./image/section9.svg" alt="Samsung Galaxy S25 Ultra"
+                                class="w-full h-40 object-contain mb-2" />
+                            <h3 class="text-sm font-medium text-gray-800 mb-1">Samsung Galaxy S25 Ultra 12/256GB</h3>
+                            <div class="text-sm text-gray-400 line-through">15 159 000 сум</div>
+                            <div class="text-base text-blue-600 font-semibold">14 259 000 сум</div>
+                            <div
+                                class="mt-auto bg-blue-500 text-white text-sm font-semibold text-center py-2 rounded hover:bg-blue-600 cursor-pointer">
+                                Купить в один клик</div>
+                        </div>
+                        <div class="w-[220px] bg-white rounded-lg shadow hover:shadow-md transition p-4 flex flex-col">
+                            <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded mb-2">Скидка</span>
+                            <img src="./image/section10.svg" alt="Honor X9C" class="w-full h-40 object-contain mb-2" />
+                            <h3 class="text-sm font-medium text-gray-800 mb-1">Honor X9C 8/256 + наушники</h3>
+                            <div class="text-sm text-gray-400 line-through">4 799 000 сум</div>
+                            <div class="text-base text-blue-600 font-semibold">3 969 000 сум</div>
+                            <div
+                                class="mt-auto bg-blue-500 text-white text-sm font-semibold text-center py-2 rounded hover:bg-blue-600 cursor-pointer">
+                                Купить в один клик</div>
+                        </div>
+                        <div class="w-[220px] bg-white rounded-lg shadow hover:shadow-md transition p-4 flex flex-col">
+                            <span class="bg-orange-400 text-white text-xs font-bold px-2 py-1 rounded mb-2">СУПЕР
+                                ЦЕНА</span>
+                            <img src="./image/section11.svg" alt="Samsung Galaxy A56"
+                                class="w-full h-40 object-contain mb-2" />
+                            <h3 class="text-sm font-medium text-gray-800 mb-1">Samsung Galaxy A56 5G</h3>
+                            <div class="text-sm text-gray-400 line-through">5 429 000 сум</div>
+                            <div class="text-base text-blue-600 font-semibold">4 979 000 сум</div>
+                            <div
+                                class="mt-auto bg-blue-500 text-white text-sm font-semibold text-center py-2 rounded hover:bg-blue-600 cursor-pointer">
+                                Купить в один клик</div>
+                        </div>
+                    </div>
+
+                    <button id="prev"
+                        class="absolute left-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10">
+                    </button>
+                    <button id="next"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10">
+                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <section class="max-w-[1200px] mx-auto py-6 px-4">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-semibold text-gray-800">Xazna 0‑0‑6</h2>
+                    <a href="#" class="text-blue-500 hover:underline text-sm">Все товары</a>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div class="bg-white rounded-lg shadow hover:shadow-md transition p-4 flex flex-col">
+                        <div class="relative mb-2">
+                            <span
+                                class="absolute top-0 left-0 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-br-lg">0‑0‑6</span>
+                            <svg class="absolute top-0 right-0 w-5 h-5 text-gray-400 hover:text-red-500 cursor-pointer"
+                                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <img src="./image/kondetsanor.svg" alt="Product 1" class="w-full h-40 object-contain mb-2" />
+                        <h3 class="text-sm font-medium text-gray-800 mb-1">Кондиционер TCL CITY 18 Inverter</h3>
+                        <div class="flex items-center text-orange-400 text-xs mb-1">★★★★★<span
+                                class="text-gray-500 ml-2">0 отзывов</span></div>
+                        <div class="text-base text-blue-600 font-semibold">5 299 000 сум</div>
+                        <div class="text-xs text-orange-500 border border-orange-500 rounded px-2 py-[2px] mt-1">
+                            883 200 сум x 6 мес
+                        </div>
+                        <button
+                            class="mt-auto bg-blue-500 text-white text-sm font-semibold py-2 rounded hover:bg-blue-600 transition flex items-center justify-center gap-2">
+                            Купить в один клик
+
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow hover:shadow-md transition p-4 flex flex-col">
+                        <div class="relative mb-2">
+                            <span
+                                class="absolute top-0 left-0 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-br-lg">0‑0‑6</span>
+                            
+                        </div>
+                        <img src="./image/kodetsanor2.svg" alt="Product 2" class="w-full h-40 object-contain mb-2" />
+                        <h3 class="text-sm font-medium text-gray-800 mb-1">Пылесос Karcher WD 3 V‑17/4/20</h3>
+                        <div class="flex items-center text-orange-400 text-xs mb-1">★★★★★<span
+                                class="text-gray-500 ml-2">0 отзывов</span></div>
+                        <div class="text-base text-blue-600 font-semibold">1 979 000 сум</div>
+                        <div class="text-xs text-orange-500 border border-orange-500 rounded px-2 py-[2px] mt-1">
+                            329 900 сум x 6 мес
+                        </div>
+                        <button
+                            class="mt-auto bg-blue-500 text-white text-sm font-semibold py-2 rounded hover:bg-blue-600 transition flex items-center justify-center gap-2">
+                            Купить в один клик
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow hover:shadow-md transition p-4 flex flex-col">
+                        <div class="relative mb-2">
+                            <span
+                                class="absolute top-0 left-0 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-br-lg">0‑0‑6</span>
+                            <svg class="absolute top-0 right-0 w-5 h-5 text-gray-400 hover:text-red-500 cursor-pointer"
+                                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <img src="./image/kondetsanor3.svg" alt="Product 3" class="w-full h-40 object-contain mb-2" />
+                        <h3 class="text-sm font-medium text-gray-800 mb-1">Утюг Philips DST5020</h3>
+                        <div class="flex items-center text-orange-400 text-xs mb-1">★★★★★<span
+                                class="text-gray-500 ml-2">0 отзывов</span></div>
+                        <div class="text-base text-blue-600 font-semibold">729 000 сум</div>
+                        <div class="text-xs text-orange-500 border border-orange-500 rounded px-2 py-[2px] mt-1">
+                            202 300 сум x 4 мес
+                        </div>
+                        <button
+                            class="mt-auto bg-blue-500 text-white text-sm font-semibold py-2 rounded hover:bg-blue-600 transition flex items-center justify-center gap-2">
+                            Купить в один клик
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13л‑1.6 8M17 13л1.6 8M9 21a1 1 0 1 0 0‑2 1 1 0 0 0 0 2z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow hover:shadow-md transition p-4 flex flex-col">
+                        <div class="relative mb-2">
+                            <span
+                                class="absolute top-0 left-0 bg-gray-800 text-white text-xs font-bold px-2 py-1 rounded-br-lg">TOP</span>
+                            <span
+                                class="absolute top-0 right-0 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">0‑0‑6</span>
+                        </div>
+                        <img src="./image/konddetsanor4.svg" alt="Product 4" class="w-full h-40 object-contain mb-2" />
+                        <h3 class="text-sm font-medium text-gray-800 mb-1">Xiaomi Redmi Note 14 Pro+ 5G 12/512GB</h3>
+                        <div class="flex items-center text-orange-400 text-xs mb-1">★★★★★<span
+                                class="text-gray-500 ml-2">1 отзыв</span></div>
+                        <div class="text-base text-blue-600 font-semibold">6 219 000 сум</div>
+                        <div class="text-xs text-orange-500 border border-orange-500 rounded px-2 py-[2px] mt-1">
+                            1 036 500 сум x 6 мес
+                        </div>
+                        <button
+                            class="mt-auto bg-blue-500 text-white text-sm font-semibold py-2 rounded hover:bg-blue-600 transition flex items-center justify-center gap-2">
+                            Купить в один клик
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13л‑1.6 8M17 13л1.6 8M9 21a1 1 0 1 0 0‑2 1 1 0 0 0 0 2z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow hover:shadow-md transition p-4 flex flex-col">
+                        <div class="relative mb-2">
+                            <span
+                                class="absolute top-0 left-0 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-br-lg">0‑0‑6</span>
+                            <svg class="absolute top-0 right-0 w-5 h-5 text-gray-400 hover:text-red-500 cursor-pointer"
+                                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <img src="./image/konddetsanor4.svg" alt="Product 5" class="w-full h-40 object-contain mb-2" />
+                        <h3 class="text-sm font-medium text-gray-800 mb-1">Xiaomi Redmi Note 14 Pro 8/256GB</h3>
+                        <div class="flex items-center text-orange-400 text-xs mb-1">★★★★★<span
+                                class="text-gray-500 ml-2">9 отзывов</span></div>
+                        <div class="text-base text-blue-600 font-semibold">3 999 000 сум</div>
+                        <div class="text-xs text-orange-500 border border-orange-500 rounded px-2 py-[2px] mt-1">
+                            666 500 сум x 6 мес
+                        </div>
+                        <button
+                            class="mt-auto bg-blue-500 text-white text-sm font-semibold py-2 rounded hover:bg-blue-600 transition flex items-center justify-center gap-2">
+                            Купить в один клик
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13л‑1.6 8M17 13л1.6 8M9 21a1 1 0 1 0 0‑2 1 1 0 0 0 0 2z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <section class="bg-gray-100 py-10">
+                <div class="max-w-screen-xl mx-auto px-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="/image/Container.svg" alt="Redmi Note 14 Pro"
+                                class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi Note 14 Pro 8/256GB
+                                Aurora Purple</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">3 749 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">624 900 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/container2.svg" alt="Redmi Note 14S"
+                                class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi Note 14S 12/512GB
+                                Midnight Black</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">3 939 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">656 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/container3.svg" alt="Redmi 15C" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi 15C 8/256GB Black
+                            </h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">1 отзыв</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">2 049 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">341 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/container4.svg" alt="Samsung A36" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Samsung Galaxy A36 5G 8/256
+                                Awesome Black</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">2 отзыва</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">4 689 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">781 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/container5.svg" alt="LG TV" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Телевизор LG 43UT91006LA 4K UltraHD webOS
+                            </h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">5 409 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">901 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-gray-100 py-10">
+                <div class="max-w-screen-xl mx-auto px-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="/image/Container.svg" alt="Redmi Note 14 Pro"
+                                class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi Note 14 Pro 8/256GB
+                                Aurora Purple</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">3 749 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">624 900 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/container2.svg" alt="Redmi Note 14S"
+                                class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi Note 14S 12/512GB
+                                Midnight Black</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">3 939 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">656 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/container3.svg" alt="Redmi 15C" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi 15C 8/256GB Black
+                            </h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">1 отзыв</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">2 049 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">341 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/container.svg" alt="Samsung A36" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Samsung Galaxy A36 5G 8/256
+                                Awesome Black</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">2 отзыва</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">4 689 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">781 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/container6.svg" alt="LG TV" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Телевизор LG 43UT91006LA 4K UltraHD webOS
+                            </h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">5 409 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">901 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-gray-100 py-10">
+                <div class="max-w-screen-xl mx-auto px-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="/image/container4.svg" alt="Redmi Note 14 Pro"
+                                class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi Note 14 Pro 8/256GB
+                                Aurora Purple</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">3 749 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">624 900 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/container2.svg" alt="Redmi Note 14S"
+                                class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi Note 14S 12/512GB
+                                Midnight Black</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">3 939 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">656 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/container3.svg" alt="Redmi 15C" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi 15C 8/256GB Black
+                            </h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">1 отзыв</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">2 049 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">341 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/container9.svg" alt="Samsung A36" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Samsung Galaxy A36 5G 8/256
+                                Awesome Black</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">2 отзыва</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">4 689 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">781 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/container8.svg" alt="LG TV" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Телевизор LG 43UT91006LA 4K UltraHD webOS
+                            </h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">5 409 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">901 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-gray-100 py-10">
+                <div class="max-w-screen-xl mx-auto px-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="/image/kondetsamor3.svg" alt="Redmi Note 14 Pro"
+                                class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi Note 14 Pro 8/256GB
+                                Aurora Purple</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">3 749 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">624 900 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/kondetsamor3.svg" alt="Redmi Note 14S"
+                                class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi Note 14S 12/512GB
+                                Midnight Black</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">3 939 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">656 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/kondetsamor.svg" alt="Redmi 15C" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi 15C 8/256GB Black
+                            </h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">1 отзыв</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">2 049 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">341 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/kondetsamor3.svg" alt="Samsung A36"
+                                class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Samsung Galaxy A36 5G 8/256
+                                Awesome Black</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">2 отзыва</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">4 689 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">781 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/kondetsamor.svg" alt="LG TV" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Телевизор LG 43UT91006LA 4K UltraHD webOS
+                            </h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">5 409 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">901 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-gray-100 py-10">
+                <div class="max-w-screen-xl mx-auto px-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="/image/kondetsamor3.svg" alt="Redmi Note 14 Pro"
+                                class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi Note 14 Pro 8/256GB
+                                Aurora Purple</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">3 749 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">624 900 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/kondetsamor3.svg" alt="Redmi Note 14S"
+                                class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi Note 14S 12/512GB
+                                Midnight Black</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">3 939 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">656 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/kondetsamor.svg" alt="Redmi 15C" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi 15C 8/256GB Black
+                            </h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">1 отзыв</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">2 049 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">341 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/kondetsamor3.svg" alt="Samsung A36"
+                                class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Samsung Galaxy A36 5G 8/256
+                                Awesome Black</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">2 отзыва</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">4 689 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">781 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/kondetsamor.svg" alt="LG TV" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Телевизор LG 43UT91006LA 4K UltraHD webOS
+                            </h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">5 409 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">901 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-gray-100 py-10">
+                <div class="max-w-screen-xl mx-auto px-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="/image/wife3.svg" alt="Redmi Note 14 Pro" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi Note 14 Pro 8/256GB
+                                Aurora Purple</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">3 749 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">624 900 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/wife2.svg" alt="Redmi Note 14S" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi Note 14S 12/512GB
+                                Midnight Black</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">3 939 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">656 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/wife5.svg" alt="Redmi 15C" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Xiaomi Redmi 15C 8/256GB Black
+                            </h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">1 отзыв</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">2 049 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">341 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/wifi4.svg" alt="Samsung A36" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Смартфон Samsung Galaxy A36 5G 8/256
+                                Awesome Black</h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">2 отзыва</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">4 689 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">781 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col">
+                            <img src="./image/container.svg" alt="LG TV" class="w-full h-44 object-contain mb-4">
+                            <h3 class="text-sm font-medium text-gray-800 mb-2">Телевизор LG 43UT91006LA 4K UltraHD webOS
+                            </h3>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-gray-500 ml-2">0 отзывов</span>
+                            </div>
+                            <div class="text-xl font-semibold text-blue-600 mb-1">5 409 000 сум</div>
+                            <div class="text-sm text-orange-500 font-medium mb-4">901 500 сум x 6 мес</div>
+                            <div class="mt-auto flex gap-2">
+                                <button
+                                    class="flex-1 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700">Купить
+                                    в один клик</button>
+                                <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">
+                                    🛒
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="flex flex-col md:flex-row gap-6 max-w-4xl mx-auto w-full">
+                <div
+                    class="relative bg-gradient-to-r from-blue-500 to-blue-400 text-white rounded-lg p-6 flex-1 overflow-hidden">
+                    <div class="absolute top-4 right-4">
+                        <span class="absolute inline-flex h-5 w-5 animate-ping rounded-full bg-white opacity-50"></span>
+                        <span class="relative inline-flex h-5 w-5 rounded-full bg-white"></span>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-2">Asaxiy ilovasini yuklab oling</h2>
+                    <p class="mb-4">QR‑kodni skan qiling va qulay, tez xarid qiling!</p>
+                    <div class="w-28 h-28 bg-white rounded-lg mb-4 animate-pulse mx-auto"></div>
+                    <button class="bg-white text-blue-500 font-semibold px-4 py-2 rounded hover:bg-blue-100 transition">
+                        Yuklash
+                    </button>
+                </div>
+
+                <div
+                    class="relative bg-gradient-to-r from-orange-500 to-red-400 text-white rounded-lg p-6 flex-1 overflow-hidden">
+                    <div class="absolute top-4 right-4">
+                        <span class="absolute inline-flex h-5 w-5 animate-ping rounded-full bg-white opacity-50"></span>
+                        <span class="relative inline-flex h-5 w-5 rounded-full bg-white"></span>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-2">Asaxiy Books ilovasini yuklab oling</h2>
+                    <p class="mb-4">Kitoblarni oson va tez xarid qiling!</p>
+                    <div class="w-28 h-28 bg-white rounded-lg mb-4 animate-pulse mx-auto"></div>
+                    <button
+                        class="bg-white text-orange-500 font-semibold px-4 py-2 rounded hover:bg-orange-100 transition">
+                        Yuklash
+                    </button>
+                </div>
+            </section>
+
+            <section class="bg-gray-50 py-6">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-semibold text-gray-800">Известные бренды</h2>
+                        <a href="#" class="text-blue-600 hover:underline text-sm">Все бренды</a>
+                    </div>
+
+                    <div class="relative overflow-hidden">
+                        <div class="flex space-x-4 overflow-x-auto  items-center justify-center pb-2">
+                            <div
+                                class="flex-shrink-0 w-24 h-20 bg-white rounded-lg shadow border flex items-center justify-center">
+                                <span class="text-2xl">⬤</span>
+                            </div>
+
+                            <div
+                                class="flex-shrink-0 w-24 h-20 bg-white rounded-lg shadow border flex items-center justify-center">
+                                <img src="./image/noutbouk.svg" alt="Hoffman" class="h-8">
+                            </div>
+
+                            <div
+                                class="flex-shrink-0 w-24 h-20 bg-white rounded-lg shadow border flex items-center justify-center">
+                                <span class="text-2xl">●●●</span>
+                            </div>
+
+                            <div
+                                class="flex-shrink-0 w-24 h-20 bg-white rounded-lg shadow border flex items-center justify-center">
+                                <img src="./image/apple.svg" alt="Apple" class="h-8">
+                            </div>
+
+                            <div
+                                class="flex-shrink-0 w-24 h-20 bg-white rounded-lg shadow border flex items-center justify-center">
+                                <img src="./image/acer.svg" alt="Acer" class="h-6">
+                            </div>
+
+                            <div
+                                class="flex-shrink-0 w-24 h-20 bg-white rounded-lg shadow border flex items-center justify-center">
+                                <img src="./image/apple.svg" alt="Lenovo" class="h-6">
+                            </div>
+
+                            <div
+                                class="flex-shrink-0 w-24 h-20 bg-white rounded-lg shadow border flex items-center justify-center">
+                                <img src="./image/noutbouk.svg" alt="Xiaomi" class="h-6">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="bg-gray-50 py-10 px-4 sm:px-6 lg:px-8 rounded-lg">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 mb-4">О компании <span
+                            class="text-black font-bold">Asaxiy</span></h2>
+                    <p class="text-gray-700 text-sm sm:text-base leading-relaxed">
+                        Главное преимущество нашей компании, которая занимается поставками бытовой техники и электроники
+                        в Узбекистане — многолетний опыт работы и заслуженное доброе имя. С момента своего развития
+                        интернет-магазин Asaxiy и его команда неустанно следят за тенденциями спроса потребительского
+                        рынка, что дает нам возможность всегда быть в курсе самых последних технологий и инновационных
+                        решений. Специалисты компании внимательно изучают желания наших клиентов, поэтому ресурс
+                        постоянно обновляется качественными новинками, имеющими доступную стоимость.
+                    </p>
+                </div>
+
+                <div class="max-w-4xl mx-auto mt-8 divide-y divide-gray-300 bg-white rounded-md shadow">
+
+                    <div x-data="{ open: false }" class="p-4">
+                        <button @click="open = !open"
+                            class="w-full flex justify-between items-center text-left font-medium text-gray-800">
+                            <span>Принцип работы компании</span>
+                            <svg :class="{'rotate-180': open}"
+                                class="w-5 h-5 transform transition-transform duration-300" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                               
+                            </svg>
+                        </button>
+                        <div x-show="open" x-collapse class="mt-3 text-gray-600 text-sm leading-relaxed">
+                            Наша компания придерживается принципов честности, надежности и высококачественного
+                            обслуживания. Мы стремимся к долгосрочному сотрудничеству с нашими клиентами.
+                        </div>
+                    </div>
+
+                    <div x-data="{ open: false }" class="p-4">
+                        <button @click="open = !open"
+                            class="w-full flex justify-between items-center text-left font-medium text-gray-800">
+                            <span>Наши преимущества</span>
+                            <svg :class="{'rotate-180': open}"
+                                class="w-5 h-5 transform transition-transform duration-300" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div x-show="open" x-collapse class="mt-3 text-gray-600 text-sm leading-relaxed space-y-1">
+                            <p>✔️ Большой ассортимент товаров</p>
+                            <p>✔️ Быстрая доставка</p>
+                            <p>✔️ Качественный сервис</p>
+                            <p>✔️ Гибкая система скидок</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 text-sm text-gray-800 space-y-1">
+                        <p><strong>"Asaxiy Books" ООО</strong></p>
+                        <p>Регистрация: <span class="font-medium">646439</span></p>
+                        <p>ИНН: <span class="font-medium">305829008</span></p>
+                        <p>Директор: <span class="font-medium">Allayev Firuz Abdunasimovich</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-blue-600 py-10">
+                <div class="max-w-5xl mx-auto px-4">
+                    <div class="bg-white p-6 rounded-lg shadow-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                        <div class="flex items-start space-x-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-blue-600 flex-shrink-0"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 12l2-2 4 4 8-8 2 2" />
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Больше не нужно ходить на базар</h4>
+                                <p class="text-gray-600 text-sm">Выгодные цены и доставка до дома</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-blue-600 flex-shrink-0"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Быстрая доставка</h4>
+                                <p class="text-gray-600 text-sm">Наш сервис удивит вас</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-blue-600 flex-shrink-0"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Удобства для вас</h4>
+                                <p class="text-gray-600 text-sm">Быстрое оформление и гарантия возврата</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-blue-600 flex-shrink-0"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 17v-6h6v6m2 0a2 2 0 002-2v-5a2 2 0 00-2-2h-1l-2-2h-4l-2 2H7a2 2 0 00-2 2v5a2 2 0 002 2h10z" />
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Рассрочка</h4>
+                                <p class="text-gray-600 text-sm">Без предоплаты на 3, 6 или 12 месяцев</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <footer class="bg-gray-100 text-gray-700">
+                <div class="max-w-7xl mx-auto px-4 py-10">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+
+                        <div>
+                            <h5 class="font-semibold text-gray-900 mb-3">Об Asaxiy</h5>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="#" class="hover:text-blue-600">О нас</a></li>
+                                <li><a href="#" class="hover:text-blue-600">Карьера в Asaxiy</a></li>
+                                <li><a href="#" class="hover:text-blue-600">Лицензии и сертификаты</a></li>
+                                <li><a href="#" class="hover:text-blue-600">Политика Asaxiy</a></li>
+                                <li><a href="#" class="hover:text-blue-600">Контакты</a></li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h5 class="font-semibold text-gray-900 mb-3">Покупателям</h5>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="#" class="hover:text-blue-600">FAQ</a></li>
+                                <li><a href="#" class="hover:text-blue-600">Статус e‑lyurti ishonchli</a></li>
+                                <li><a href="#" class="hover:text-blue-600">«Asaxiy Plus»</a></li>
+                                <li><a href="#" class="hover:text-blue-600">Договор оферты</a></li>
+                                <li><a href="#" class="hover:text-blue-600">Оферта для рассрочки</a></li>
+                                <li><a href="#" class="hover:text-blue-600">Публичная оферта</a></li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h5 class="font-semibold text-gray-900 mb-3">Информация</h5>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="#" class="hover:text-blue-600">Наши бренды</a></li>
+                                <li><a href="#" class="hover:text-blue-600">Новости</a></li>
+                                <li><a href="#" class="hover:text-blue-600">Блог</a></li>
+                                <li><a href="#" class="hover:text-blue-600">Карта сайта</a></li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h5 class="font-semibold text-gray-900 mb-3">Доставка и магазины</h5>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="#" class="flex items-center hover:text-blue-600">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 10h4l3 8h7l3-8h4" />
+                                        </svg>
+                                        Наши магазины
+                                    </a></li>
+                                <li><a href="#" class="flex items-center hover:text-blue-600">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 12h14m-7 7V5" />
+                                        </svg>
+                                        Пункты выдачи
+                                    </a></li>
+                                <li><a href="#" class="flex items-center hover:text-blue-600">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 17v-5l-2 2m12 0l-2-2v5" />
+                                        </svg>
+                                        Доставка
+                                    </a></li>
+                            </ul>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <h5 class="font-semibold text-gray-900 mb-2">Для связи</h5>
+                                <ul class="space-y-1 text-sm">
+                                    <li><a href="tel:+99871200105" class="hover:text-blue-600">+998 71 200 01 05</a>
+                                    </li>
+                                    <li><a href="mailto:info@asaxiy.uz" class="hover:text-blue-600">info@asaxiy.uz</a>
+                                    </li>
+                                    <li><a href="#" class="hover:text-blue-600">Telegram bot</a></li>
+                                    <li class="flex items-center"><svg class="w-4 h-4 mr-1" fill="none"
+                                            stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8m-9 6V3" />
+                                        </svg>ул. Гавхар 124, Ташкент</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-gray-900 mb-2">Виды оплаты</h5>
+                                <div class="flex flex-wrap items-center gap-3">
+                                    <img src="./image/uzum.svg" alt="Uzum" class="h-6">
+                                    <img src="./image/payme.svg" alt="Payme" class="h-6">
+                                    <img src="/image/humo.svg" alt="Click" class="h-6">
+                                    <img src="./image/humo.svg" alt="Humo" class="h-6">
+                                    <img src="./image/click.svg" alt="Hazna" class="h-6">
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-gray-900 mb-2">Мы в соц. сетях</h5>
+                                <div class="flex items-center space-x-3">
+                                    <a href="#" class="hover:text-blue-600"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="hover:text-blue-600"><i class="fab fa-telegram-plane"></i></a>
+                                    <a href="#" class="hover:text-blue-600"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="hover:text-blue-600"><i class="fab fa-youtube"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="mt-8 text-center text-xs text-gray-500">
+                        © 2015 – 2025 Интернет-магазин asaxiy.uz: Бытовая техника и др. Доставка товаров осуществляется
+                        во все регионы. Все права защищены.
+                    </div>
+                </div>
+            </footer>
+
+  <script defer src="main.js"></script>
+</body>
+</head>
